@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 25, 2015 12:53:34 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entidades.Poliza" schema="public" table="poliza">
+        <id name="correlativo" type="int">
+            <column name="correlativo"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="Entidades.TipoPoliza" fetch="select" name="tipoPoliza">
+            <column name="tipo" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="Entidades.Moneda" fetch="select" name="moneda">
+            <column name="moneda" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="Entidades.Cliente" fetch="select" name="cliente">
+            <column name="cliente" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="Entidades.Estado" fetch="select" name="estado">
+            <column name="estado" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="Entidades.Empleado" fetch="select" name="empleado">
+            <column name="empleado" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="Entidades.Operador" fetch="select" name="operador">
+            <column name="operador" not-null="true"/>
+        </many-to-one>
+        <property name="fechainicial" type="date">
+            <column length="13" name="fechainicial" not-null="true"/>
+        </property>
+        <property name="fechafinal" type="date">
+            <column length="13" name="fechafinal" not-null="true"/>
+        </property>
+        <property name="numeropagos" type="int">
+            <column name="numeropagos" not-null="true"/>
+        </property>
+        <property name="polizaanterior" type="string">
+            <column name="polizaanterior"/>
+        </property>
+        <property name="interes" type="double">
+            <column name="interes" not-null="true" precision="17" scale="17"/>
+        </property>
+        <property name="deducible" type="double">
+            <column name="deducible" not-null="true" precision="17" scale="17"/>
+        </property>
+        <property name="valor" type="double">
+            <column name="valor" not-null="true" precision="17" scale="17"/>
+        </property>
+        <property name="venta" type="string">
+            <column name="venta" not-null="true"/>
+        </property>
+        <set inverse="true" name="pagoses">
+            <key>
+                <column name="poliza" not-null="true"/>
+            </key>
+            <one-to-many class="Entidades.Pagos"/>
+        </set>
+        <set inverse="true" name="documentoses">
+            <key>
+                <column name="poliza" not-null="true"/>
+            </key>
+            <one-to-many class="Entidades.Documentos"/>
+        </set>
+        <set inverse="true" name="biens">
+            <key>
+                <column name="poliza" not-null="true"/>
+            </key>
+            <one-to-many class="Entidades.Bien"/>
+        </set>
+    </class>
+</hibernate-mapping>

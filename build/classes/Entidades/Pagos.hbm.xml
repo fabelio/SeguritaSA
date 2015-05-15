@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 25, 2015 12:53:34 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entidades.Pagos" schema="public" table="pagos">
+        <id name="codigo" type="int">
+            <column name="codigo"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="Entidades.Tipopago" fetch="select" name="tipopago">
+            <column name="tipopago" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="Entidades.Poliza" fetch="select" name="poliza">
+            <column name="poliza" not-null="true"/>
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column length="13" name="fecha" not-null="true"/>
+        </property>
+        <property name="monto" type="double">
+            <column name="monto" not-null="true" precision="17" scale="17"/>
+        </property>
+    </class>
+</hibernate-mapping>

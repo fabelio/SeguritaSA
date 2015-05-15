@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 25, 2015 12:53:34 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entidades.Empleado" schema="public" table="empleado">
+        <id name="id" type="int">
+            <column name="id"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="Entidades.Departamento" fetch="select" name="departamento">
+            <column name="departamento" not-null="true"/>
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" not-null="true"/>
+        </property>
+        <property name="codigo" type="string">
+            <column name="codigo" not-null="true"/>
+        </property>
+        <set inverse="true" name="polizas">
+            <key>
+                <column name="empleado" not-null="true"/>
+            </key>
+            <one-to-many class="Entidades.Poliza"/>
+        </set>
+        <set inverse="true" name="biens">
+            <key>
+                <column name="empleado" not-null="true"/>
+            </key>
+            <one-to-many class="Entidades.Bien"/>
+        </set>
+    </class>
+</hibernate-mapping>

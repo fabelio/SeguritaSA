@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/SeguritasSA</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">datos123</property>
+        <mapping resource="Entidades/Pais.hbm.xml"/>
+        <mapping resource="Entidades/Poliza.hbm.xml"/>
+        <mapping resource="Entidades/Empleado.hbm.xml"/>
+        <mapping resource="Entidades/TipoPoliza.hbm.xml"/>
+        <mapping resource="Entidades/Cliente.hbm.xml"/>
+        <mapping resource="Entidades/Operador.hbm.xml"/>
+        <mapping resource="Entidades/Pagos.hbm.xml"/>
+        <mapping resource="Entidades/Tipopago.hbm.xml"/>
+        <mapping resource="Entidades/Departamento.hbm.xml"/>
+        <mapping resource="Entidades/Estado.hbm.xml"/>
+        <mapping resource="Entidades/Usuario.hbm.xml"/>
+        <mapping resource="Entidades/Bien.hbm.xml"/>
+        <mapping resource="Entidades/Moneda.hbm.xml"/>
+        <mapping resource="Entidades/Cobertura.hbm.xml"/>
+        <mapping resource="Entidades/Documentos.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

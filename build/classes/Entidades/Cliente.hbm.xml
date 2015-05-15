@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 25, 2015 12:53:34 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Entidades.Cliente" schema="public" table="cliente">
+        <id name="codigo" type="int">
+            <column name="codigo"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="Entidades.Pais" fetch="select" name="pais">
+            <column name="pais" not-null="true"/>
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" not-null="true"/>
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" not-null="true"/>
+        </property>
+        <set inverse="true" name="polizas">
+            <key>
+                <column name="cliente" not-null="true"/>
+            </key>
+            <one-to-many class="Entidades.Poliza"/>
+        </set>
+    </class>
+</hibernate-mapping>
